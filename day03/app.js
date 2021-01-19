@@ -73,6 +73,7 @@ fs.appendFile('./css/base.css','body{color:red}',(err)=>{
 */
 
 // 5. fs.readFile 读取文件
+/*
 fs.readFile('./html/index.html',(err,data)=>{
     if(err) {
         console.log(err);
@@ -80,4 +81,13 @@ fs.readFile('./html/index.html',(err,data)=>{
     }
     console.log(data.toString()); // 把 buffer转成string类型
 })
+*/
 
+// 6. fs.readdir 读取目录
+fs.readdir('./html',(err,data)=>{
+    if(err) {
+        console.log(err);
+        return;
+    }
+    console.log(data); 
+})
