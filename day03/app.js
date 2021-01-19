@@ -84,6 +84,7 @@ fs.readFile('./html/index.html',(err,data)=>{
 */
 
 // 6. fs.readdir 读取目录
+/*
 fs.readdir('./html',(err,data)=>{
     if(err) {
         console.log(err);
@@ -91,3 +92,17 @@ fs.readdir('./html',(err,data)=>{
     }
     console.log(data); 
 })
+*/
+
+// 7. fs.rename 重命名 功能： 1. 表示重命名文件  2. 移动文件
+/*
+fs.rename('./css/aaa.css','./css/index.css',(err)=>{
+    if(err) {
+        console.log(err);
+        return;
+    }
+    console.log('重命名成功'); 
+})
+*/
+
+
