@@ -105,4 +105,26 @@ fs.rename('./css/aaa.css','./css/index.css',(err)=>{
 })
 */
 
+// 8. fs.rmdir 删除目录
+/*
+fs.rmdir('./aaa',(err)=>{
+    if(err) {
+        console.log(err);
+        return;
+    }
+    console.log('删除成功'); 
+})
+*/
 
+
+
+// 9. fs.unlink 删除文件
+/*
+fs.unlink('./aaa/index.html',(err)=>{
+    if(err) {
+        console.log(err);
+        return;
+    }
+    console.log('删除文件成功'); 
+})
+*/
