@@ -62,10 +62,15 @@ fs.writeFile('./html/index.html','你好nodejs',(err)=>{
 */
 
 // 4. fs.appendFile 追加文件
-// fs.appendFile('./css/base.css','body{color:red}',(err)=>{
-//     if(err) {
-//         console.log(err);
-//         return;
-//     }
-//     console.log('appendFile成功')
-// })
+/*
+fs.appendFile('./css/base.css','body{color:red}',(err)=>{
+    if(err) {
+        console.log(err);
+        return;
+    }
+    console.log('appendFile成功')
+})
+*/
+
+
+
