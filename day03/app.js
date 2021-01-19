@@ -24,3 +24,18 @@ fs.stat('./package.json',(err,data)=>{
 */
 
 //2. fs.mkdir 创建目录
+/*
+    path     将穿件的路径
+    mode     目录权限(读写权限),
+    callback 回调，传递异常参数err
+*/
+
+/*
+fs.mkdir('./css',(err)=>{
+    if(err) {
+        console.log(err)
+        return;
+    }
+    console.log('创建成功')
+})
+*/
