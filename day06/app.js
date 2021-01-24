@@ -9,7 +9,7 @@ for(var i=0;i<500;i++) {
 var writeStream = fs.createWriteStream('./data/input.txt');
 
 writeStream.write(str);
-// 标记写入完成
+// 标记写入完成1 
 writeStream.end();
 
 writeStream.on('finish',()=>{
