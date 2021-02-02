@@ -17,6 +17,25 @@ http.createServer(function(req,res) {
         res.writeHead(200,{'Content-Type': 'text/html ;charset=utf-8'})
         res.end('get传值获取成功');
 
+    }else if(pathname == '/login'){
+        // post 演示
+        ejs.renderFile("./view/form.ejs",{},(err,data)=>{
+            res.writeHead(200,{'Content-Type': 'text/html ;charset=utf-8'})
+            res.end(data);
+        })
+    }else if(pathname == '/doLogin'){
+        // 获取post传值
+        let postData = '';
+        req.on('data',(chunk)=>{
+            postData+=chunk
+        })
+
+        req.on('end',(chunk)=>{
+            console.log(postData);
+            res.end(postData)
+        })
+
+
     }else if(pathname == '/register') {
         res.writeHead(200,{'Content-Type': 'text/html ;charset=utf-8'})
         res.end('执行注册');
