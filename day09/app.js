@@ -8,18 +8,14 @@ http.createServer(function(req,res) {
     routes.static(req,res,'static')
     let pathname = url.parse(req.url).pathname;
 
-    if(pathname == '/login') {
-        let msg = "数据库里面的数据";
-        let list = [
-            {title: '新闻111'},
-            {title: '新闻222'},
-            {title: '新闻333'}
-        ]
+    // 获取请求类型
+    console.log(req.method)
 
-        ejs.renderFile('./view/login.ejs',{msg,list},(err,data)=>{
-            res.writeHead(200,{'Content-Type': 'text/html ;charset=utf-8'})
-            res.end(data);
-        })
+    if(pathname == '/news') {
+        var query = url.parse(req.url, true).query;
+        console.log(query.age)
+        res.writeHead(200,{'Content-Type': 'text/html ;charset=utf-8'})
+        res.end('get传值获取成功');
 
     }else if(pathname == '/register') {
         res.writeHead(200,{'Content-Type': 'text/html ;charset=utf-8'})
