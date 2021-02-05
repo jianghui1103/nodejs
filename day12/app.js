@@ -1,10 +1,11 @@
 const http = require("http");
 const app = require('./module/route')
 const ejs = require('ejs')
+const fs = require('fs')
 
 http.createServer(app).listen(3000)
 
-app.static("public")
+app.static("static")
 
 app.get('/login',function(req,res){
     ejs.renderFile('./view/form.ejs',{},(error,data)=>{

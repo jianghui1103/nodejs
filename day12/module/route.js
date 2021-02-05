@@ -17,24 +17,22 @@ function getFileMime(extname) {
 }
 
 function initStatic(req,res,staticPath){
-    // 获取地址
     let pathname = url.parse(req.url).pathname;
     pathname = pathname == '/' ? '/index.html':pathname;
-    let extname = path.extname(pathname)
+    let extname = path.extname(pathname) 
     // 通过fs模块读取文件
-    try {
-        let data = fs.readFileSync('./' + staticPath + pathname);
-        if(data) {
-            let mime =getFileMime(extname);
-            res.writeHead(200,{'Content-Type': '' + mime +';charset=utf-8'})
-            res.end(data);
-        }else {
-
+    if(extname) {
+        try {
+            let data = fs.readFileSync('./' + staticPath + pathname);
+            if(data) {
+                let mime =getFileMime(extname);
+                res.writeHead(200,{'Content-Type': mime +';charset=utf-8'})
+                res.end(data);
+            }
+        } catch (error) {
+            console.log(error)
         }
-    } catch (error) {
     }
-
-
 }
 
 
@@ -50,9 +48,8 @@ let server = ()=>{
     let app = function(req,res){
         // 拓展的res的方法
         changeRes(res)
-        // 配置静态web服务
-        initStatic(req,res,G.staticPath)
         let pathname = url.parse(req.url).pathname;
+        let extname = path.extname(pathname) 
         let method = req.method.toLowerCase();
         if(G['_'+method][pathname]){
             if(method == 'get') {
@@ -69,7 +66,9 @@ let server = ()=>{
                     G._post[pathname](req,res)
                 })
             }
-           
+        }else if(extname) {
+        // 配置静态web服务
+            initStatic(req,res,G.staticPath)
         }else{
             res.writeHead(404,{'Content-Type':'text/html;charset=utf-8'})
             res.end('这个页面不存在')
