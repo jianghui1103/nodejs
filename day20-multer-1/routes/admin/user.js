@@ -1,5 +1,5 @@
 const express = require('express');
-
+const tools = require('../../model/tools')
 var router = express.Router()
 
 
@@ -7,15 +7,15 @@ router.get('/',(req,res)=>{
     res.send('用户列表')
 })
 router.get('/add',(req,res)=>{
-    res.send('增加用户')
+    res.render('admin/user/add.html')
 })
-router.get('/edit',(req,res)=>{
-    res.send('修改用户')
+
+let cpUpload = tools.multer().fields([{name: 'pic1',maxCount: 1},{name: 'pic2',maxCount: 1}])
+router.post('/doAdd',cpUpload,(req,res)=>{
+    res.send({
+        body: req.body,
+        files: req.files
+    })
 })
-router.post('/doAdd',(req,res)=>{
-    res.send('执行新增')
-})
-router.post('/doEdit',(req,res)=>{
-    res.send('执行修改')
-})
+
 module.exports = router
